@@ -17,9 +17,25 @@ function draw() {
 
 function generateDungeon() {
   grid = createEmptyGrid(rows, cols);
-
+  
+  //create t spawn 
+    let TroomWidth = floor(random(3, 8));
+    let TroomHeight = floor(random(3, 8));
+    let Tx = floor(random(cols - TroomWidth));
+    let Ty = floor(random(rows - TroomHeight));
+    createRoom(Ty, TroomWidth, TroomHeight);
+  
+  //create ct spawn
+    let CTroomWidth = floor(random(3, 8));
+    let CTroomHeight = floor(random(3, 8));
+    let CTx = floor(random(cols - CTroomWidth));
+    let CTy = floor(random(rows - CTroomHeight));
+    createRoom(CTx, CTy, CTroomWidth, CTroomHeight);
+  
+  //create bomb rooms too? but on x axis instead
+  
   // Create random rooms
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 6; i++) {
     let roomWidth = floor(random(3, 8));
     let roomHeight = floor(random(3, 8));
     let x = floor(random(cols - roomWidth));
