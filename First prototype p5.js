@@ -18,24 +18,36 @@ function draw() {
 function generateDungeon() {
   grid = createEmptyGrid(rows, cols);
   
-  //create t spawn 
-    let TroomWidth = floor(random(3, 8));
-    let TroomHeight = floor(random(3, 8));
-    let Tx = floor(random(cols - TroomWidth));
-    let Ty = floor(random(rows - TroomHeight));
-    createRoom(Ty, TroomWidth, TroomHeight);
+  // Create T spawn room
+  let tSpawnWidth = floor(random(3, 8));
+  let tSpawnHeight = floor(random(3, 8));
+  let tSpawnX = floor((cols - tSpawnWidth) / 2);
+  let tSpawnY = 0;
+  createRoom(tSpawnX, tSpawnY, tSpawnWidth, tSpawnHeight);
   
-  //create ct spawn
-    let CTroomWidth = floor(random(3, 8));
-    let CTroomHeight = floor(random(3, 8));
-    let CTx = floor(random(cols - CTroomWidth));
-    let CTy = floor(random(rows - CTroomHeight));
-    createRoom(CTx, CTy, CTroomWidth, CTroomHeight);
+  // Create CT spawn room
+  let ctSpawnWidth = floor(random(3, 8));
+  let ctSpawnHeight = floor(random(3, 8));
+  let ctSpawnX = floor((cols - ctSpawnWidth) / 2);
+  let ctSpawnY = rows - ctSpawnHeight;
+  createRoom(ctSpawnX, ctSpawnY, ctSpawnWidth, ctSpawnHeight);
+
+  // Create A bombsite
+  let bombsiteAWidth = floor(random(3, 8));
+  let bombsiteAHeight = floor(random(3, 8));
+  let bombsiteAX = 0;
+  let bombsiteAY = floor((rows - bombsiteAHeight) / 2);
+  createRoom(bombsiteAX, bombsiteAY, bombsiteAWidth, bombsiteAHeight);
   
-  //create bomb rooms too? but on x axis instead
+  // Create B bombsite
+  let bombsiteBWidth = floor(random(3, 8));
+  let bombsiteBHeight = floor(random(3, 8));
+  let bombsiteBX = cols - bombsiteBWidth;
+  let bombsiteBY = floor((rows - bombsiteBHeight) / 2);
+  createRoom(bombsiteBX, bombsiteBY, bombsiteBWidth, bombsiteBHeight);
   
   // Create random rooms
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 4; i++) {
     let roomWidth = floor(random(3, 8));
     let roomHeight = floor(random(3, 8));
     let x = floor(random(cols - roomWidth));
